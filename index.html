@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Aekphan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    overflow-x:hidden;
+}
+
+body{
+
+    font-family:'Prompt',sans-serif;
+
+    overflow-x:hidden;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffffff,
+        #f8f4ff,
+        #eef6ff
+    );
+
+    position:relative;
+
+    transition:.8s;
+}
+
+/* glow background */
+
+.glow{
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.25;
+
+    animation:float 10s ease-in-out infinite;
+}
+
+.glow1{
+
+    background:#b388ff;
+
+    top:-180px;
+    left:-180px;
+}
+
+.glow2{
+
+    background:#7ec8ff;
+
+    bottom:-180px;
+    right:-180px;
+
+    animation-delay:3s;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-30px);
+    }
+}
+
+/* particles */
+
+.particle{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#b388ff;
+
+    opacity:.1;
+
+    animation:particle linear infinite;
+}
+
+@keyframes particle{
+
+    from{
+        transform:translateY(100vh);
+    }
+
+    to{
+        transform:translateY(-100vh);
+    }
+}
+
+/* main card */
+
+.card{
+
+    position:relative;
+
+    z-index:10;
+
+    width:90%;
+    max-width:420px;
+
+    padding:55px 30px;
+
+    border-radius:36px;
+
+    background:
+    rgba(255,255,255,.5);
+
+    backdrop-filter:blur(18px);
+
+    border:
+    1px solid rgba(255,255,255,.7);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.05);
+
+    text-align:center;
+
+    animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* text */
+
+.small{
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    color:#9ca3af;
+
+    margin-bottom:18px;
+}
+
+h1{
+
+    font-size:42px;
+
+    line-height:1.2;
+
+    margin-bottom:18px;
+
+    color:#111827;
+}
+
+.gradient{
+
+    background:
+    linear-gradient(
+        to right,
+        #b388ff,
+        #6ebeff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+
+    font-size:15px;
+
+    line-height:2;
+
+    color:#4b5563;
+}
+
+/* cake */
+
+.cake{
+
+    position:relative;
+
+    width:170px;
+    height:120px;
+
+    margin:auto;
+    margin-top:45px;
+
+    cursor:pointer;
+
+    transition:.4s;
+}
+
+.cake:hover{
+
+    transform:translateY(-3px);
+}
+
+/* cake body */
+
+.cake-body{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+    height:100px;
+
+    border-radius:24px;
+
+    background:
+    linear-gradient(
+        180deg,
+        #d8c1ff,
+        #b7dcff
+    );
+
+    box-shadow:
+    0 20px 40px rgba(190,190,255,.2);
+}
+
+/* icing */
+
+.icing{
+
+    position:absolute;
+
+    top:20px;
+
+    width:100%;
+    height:28px;
+
+    background:white;
+
+    border-radius:
+    22px 22px 14px 14px;
+}
+
+.icing::before,
+.icing::after{
+
+    content:'';
+
+    position:absolute;
+
+    width:24px;
+    height:18px;
+
+    background:white;
+
+    border-radius:50%;
+
+    bottom:-8px;
+}
+
+.icing::before{
+
+    left:34px;
+}
+
+.icing::after{
+
+    right:34px;
+}
+
+/* candle */
+
+.candle{
+
+    position:absolute;
+
+    width:14px;
+    height:42px;
+
+    background:white;
+
+    border-radius:10px;
+
+    top:-22px;
+    left:50%;
+
+    transform:translateX(-50%);
+}
+
+/* flame */
+
+.flame{
+
+    position:absolute;
+
+    width:18px;
+    height:18px;
+
+    top:-16px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        #fff7b0 0%,
+        #ffd36b 70%
+    );
+
+    animation:flicker .8s infinite;
+
+    box-shadow:
+    0 0 30px #ffd36b;
+}
+
+@keyframes flicker{
+
+    0%{
+        transform:
+        translateX(-50%)
+        scale(1);
+    }
+
+    50%{
+        transform:
+        translateX(-50%)
+        scale(1.15);
+    }
+
+    100%{
+        transform:
+        translateX(-50%)
+        scale(1);
+    }
+}
+
+/* wish text */
+
+.wish-text{
+
+    margin-top:24px;
+
+    font-size:14px;
+
+    color:#8b8b8b;
+
+    animation:float2 2s infinite;
+}
+
+@keyframes float2{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(6px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* notification */
+
+.notification{
+
+    position:absolute;
+
+    top:28px;
+
+    left:50%;
+
+    transform:
+    translateX(-50%)
+    translateY(-20px);
+
+    width:88%;
+
+    max-width:420px;
+
+    padding:18px 22px;
+
+    border-radius:24px;
+
+    background:
+    rgba(255,255,255,.72);
+
+    backdrop-filter:blur(18px);
+
+    border:
+    1px solid rgba(255,255,255,.8);
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.05);
+
+    opacity:0;
+
+    transition:.8s;
+
+    z-index:20;
+}
+
+.notification.show{
+
+    opacity:1;
+
+    transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+.notification-title{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#111827;
+
+    margin-bottom:6px;
+}
+
+.notification-text{
+
+    font-size:13px;
+
+    line-height:1.8;
+
+    color:#6b7280;
+}
+
+/* letter */
+.letter{
+
+    margin-top:35px;
+
+    display:none;
+
+    cursor:pointer;
+
+    animation:fade 1s ease;
+}
+
+.letter-icon{
+
+    width:72px;
+    height:72px;
+
+    margin:auto;
+
+    border-radius:24px;
+
+    background:
+    rgba(255,255,255,0.7);
+
+    backdrop-filter:blur(12px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:
+    0 10px 25px rgba(124,77,255,0.08);
+
+    transition:0.3s;
+}
+
+.letter-icon:hover{
+
+    transform:translateY(-3px);
+}
+
+.letter-icon svg{
+
+    width:30px;
+    height:30px;
+
+    stroke:#4f46e5;
+}
+
+.letter p{
+
+    margin-top:12px;
+
+    font-size:13px;
+
+    color:#6b7280;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+/* เอฟเฟคกด */
+
+.ripple{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    animation:ripple 0.8s ease-out forwards;
+}
+
+@keyframes ripple{
+
+    from{
+        width:0;
+        height:0;
+        opacity:0.45;
+    }
+
+    to{
+        width:220px;
+        height:220px;
+        opacity:0;
+    }
+}
+
+/* sparkle */
+
+.spark{
+
+    position:fixed;
+
+    font-size:18px;
+
+    pointer-events:none;
+
+    animation:spark 1s forwards;
+}
+
+@keyframes spark{
+
+    0%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+        translateY(-80px)
+        scale(2);
+    }
+}
+
+/* ripple */
+
+.ripple{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    animation:ripple .8s ease-out forwards;
+}
+
+@keyframes ripple{
+
+    from{
+        width:0;
+        height:0;
+        opacity:.45;
+    }
+
+    to{
+        width:220px;
+        height:220px;
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- glow -->
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<!-- particles -->
+
+<div id="particles"></div>
+
+<!-- notification -->
+
+<div class="notification" id="notification">
+
+    <div class="notification-title">
+        Surprise ✨
+    </div>
+
+    <div class="notification-text">
+        สุขสันต์วันเกิดนะเอกภัณฑ์ 🤍<br>
+        ขอให้ปีนี้ใจดีกับเธอเยอะ ๆ เลย
+    </div>
+
+</div>
+
+<!-- card -->
+
+<div class="card">
+
+    <div class="small">
+        FOR AEKPHAN
+    </div>
+
+    <h1>
+        Happy <span class="gradient">Birthday</span>
+    </h1>
+
+    <p class="desc">
+        วันนี้เค้ามีอะไรจะให้เธอด้วยนะ ✨
+    </p>
+
+    <!-- cake -->
+
+    <div class="cake" onclick="blowCandle()">
+
+        <div class="cake-body"></div>
+
+        <div class="icing"></div>
+
+        <div class="candle">
+
+            <div class="flame" id="flame"></div>
+
+        </div>
+
+    </div>
+
+    <div class="wish-text">
+        อธิษฐานแล้วแตะเทียนดูสิ :)
+    </div>
+
+    <!-- จดหมาย -->
+
+    <div class="letter" id="letter" onclick="goLetter()">
+
+        <div class="letter-icon">
+
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.8">
+
+                <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0v.243a2.25 2.25 0 0 1-.97 1.852l-7.5 5.25a2.25 2.25 0 0 1-2.56 0l-7.5-5.25a2.25 2.25 0 0 1-.97-1.852V6.75"/>
+
+            </svg>
+
+        </div>
+
+        <p>
+            เปิดจดหมายสิ
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+
+/* particles */
+
+for(let i=0;i<35;i++){
+
+    const particle =
+    document.createElement("div");
+
+    particle.classList.add("particle");
+
+    particle.style.left =
+    Math.random()*100 + "vw";
+
+    particle.style.animationDuration =
+    Math.random()*10 + 10 + "s";
+
+    particle.style.opacity =
+    Math.random()*0.15;
+
+    document
+    .getElementById("particles")
+    .appendChild(particle);
+}
+
+/* blow candle */
+
+function blowCandle(){
+
+    const flame =
+    document.getElementById("flame");
+
+    flame.style.transition = ".5s";
+
+    flame.style.opacity = "0";
+
+    /* sparkle */
+
+    for(let i=0;i<20;i++){
+
+        const spark =
+        document.createElement("div");
+
+        spark.classList.add("spark");
+
+        spark.innerHTML = "✦";
+
+        spark.style.left =
+        Math.random()*window.innerWidth + "px";
+
+        spark.style.top =
+        Math.random()*window.innerHeight + "px";
+
+        document.body.appendChild(spark);
+
+        setTimeout(()=>{
+            spark.remove();
+        },1000);
+    }
+
+    /* notification */
+
+    document
+    .getElementById("notification")
+    .classList.add("show");
+
+    /* show letter */
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("letter")
+        .style.display = "block";
+
+    },1200);
+}
+
+/* go next page */
+
+function goLetter(){
+
+    document.body.style.opacity = "0";
+
+    setTimeout(()=>{
+
+        window.location.href =
+        "letter.html";
+
+    },700);
+}
+
+/* ripple effect */
+
+document.addEventListener("click",(e)=>{
+
+    const ripple =
+    document.createElement("div");
+
+    ripple.classList.add("ripple");
+
+    ripple.style.left =
+    e.clientX - 110 + "px";
+
+    ripple.style.top =
+    e.clientY - 110 + "px";
+
+    ripple.style.background =
+    "radial-gradient(circle, rgba(179,136,255,0.16), rgba(110,190,255,0.08), transparent)";
+
+    document.body.appendChild(ripple);
+
+    setTimeout(()=>{
+        ripple.remove();
+    },800);
+});
+
+</script>
+
+</body>
+</html>

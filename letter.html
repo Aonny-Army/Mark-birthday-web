@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>To Aekphan ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    overflow-x:hidden;
+}
+
+body{
+
+    font-family:'Prompt',sans-serif;
+
+    overflow-x:hidden;
+
+    background:
+    linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f8f3ff 45%,
+        #eef7ff 100%
+    );
+
+    min-height:100vh;
+
+    color:#4b5563;
+
+    position:relative;
+}
+
+/* glow */
+
+body::before{
+
+    content:'';
+
+    position:fixed;
+
+    width:320px;
+    height:320px;
+
+    background:#d7c0ff;
+
+    filter:blur(120px);
+
+    top:-150px;
+    right:-120px;
+
+    opacity:.5;
+
+    z-index:-2;
+}
+
+body::after{
+
+    content:'';
+
+    position:fixed;
+
+    width:300px;
+    height:300px;
+
+    background:#bde0fe;
+
+    filter:blur(120px);
+
+    bottom:-120px;
+    left:-120px;
+
+    opacity:.5;
+
+    z-index:-2;
+}
+
+/* floating hearts */
+
+.heart{
+
+    position:fixed;
+
+    top:-20px;
+
+    color:#d8baff;
+
+    font-size:20px;
+
+    opacity:.6;
+
+    z-index:-1;
+
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+
+    to{
+        transform:translateY(120vh);
+    }
+}
+
+/* intro */
+
+.intro-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f7f1ff 50%,
+        #eef6ff 100%
+    );
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+
+    transition:1s ease;
+}
+
+.intro-screen.hide{
+
+    opacity:0;
+    visibility:hidden;
+}
+
+/* magic heart */
+
+.magic-heart{
+
+    font-size:95px;
+
+    color:#c69dff;
+
+    cursor:pointer;
+
+    animation:
+    floatHeart 2.5s ease-in-out infinite;
+
+    text-shadow:
+    0 0 35px rgba(198,157,255,.45);
+
+    transition:.7s;
+}
+
+@keyframes floatHeart{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+.magic-heart.open{
+
+    transform:scale(12);
+
+    opacity:0;
+}
+
+/* intro text */
+
+.intro-title{
+
+    margin-top:35px;
+
+    font-size:30px;
+
+    line-height:1.5;
+
+    text-align:center;
+
+    font-weight:600;
+
+    background:
+    linear-gradient(
+        90deg,
+        #b48cff,
+        #7abfff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.intro-text{
+
+    margin-top:12px;
+
+    color:#888;
+
+    font-size:14px;
+}
+
+/* sparkle */
+
+.spark{
+
+    position:fixed;
+
+    font-size:18px;
+
+    pointer-events:none;
+
+    animation:spark 1s forwards;
+}
+
+@keyframes spark{
+
+    0%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+        translateY(-80px)
+        scale(2);
+    }
+}
+
+/* container */
+
+.container{
+
+    width:100%;
+    max-width:430px;
+
+    margin:auto;
+
+    padding:
+    0 18px 60px;
+}
+
+/* hero */
+
+.hero{
+
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    position:relative;
+}
+
+.small{
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    color:#999;
+
+    margin-bottom:14px;
+}
+
+h1{
+
+    font-size:42px;
+
+    line-height:1.25;
+
+    margin-bottom:18px;
+}
+
+.gradient{
+
+    background:
+    linear-gradient(
+        90deg,
+        #b48cff,
+        #7abfff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.sub{
+
+    font-size:15px;
+
+    line-height:2;
+
+    color:#666;
+
+    max-width:300px;
+}
+
+.scroll{
+
+    position:absolute;
+
+    bottom:38px;
+
+    font-size:13px;
+
+    color:#999;
+
+    animation:float 2s infinite;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(8px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* card */
+
+.glass{
+
+    margin-top:10px;
+
+    background:
+    rgba(255,255,255,.45);
+
+    border:
+    1px solid rgba(255,255,255,.55);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:30px;
+
+    padding:26px;
+
+    box-shadow:
+    0 10px 30px rgba(180,180,255,.15);
+}
+
+.glass h2{
+
+    font-size:24px;
+
+    margin-bottom:16px;
+
+    color:#6b5ca5;
+}
+
+.glass p{
+
+    font-size:14px;
+
+    line-height:2.1;
+
+    color:#666;
+}
+
+/* photo */
+
+.photo{
+
+    width:100%;
+
+    height:430px;
+
+    margin-top:20px;
+
+    border-radius:26px;
+
+    overflow:hidden;
+}
+
+.photo img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+/* music */
+
+.music{
+
+    margin-top:20px;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    background:
+    rgba(255,255,255,.55);
+
+    padding:14px;
+
+    border-radius:20px;
+}
+
+.dot{
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    background:#c9a7ff;
+
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    50%{
+        transform:scale(1.5);
+        opacity:.5;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* button */
+
+button{
+
+    width:100%;
+
+    margin-top:24px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:999px;
+
+    font-family:'Prompt',sans-serif;
+
+    font-size:14px;
+
+    color:white;
+
+    cursor:pointer;
+
+    background:
+    linear-gradient(
+        90deg,
+        #ceb5ff,
+        #b8deff
+    );
+
+    box-shadow:
+    0 10px 20px rgba(190,190,255,.25);
+}
+
+/* hidden message */
+
+.hidden{
+
+    display:none;
+
+    margin-top:24px;
+
+    animation:fade .7s ease;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+        transform:translateY(14px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* footer */
+
+.footer{
+
+    text-align:center;
+
+    margin-top:50px;
+
+    color:#999;
+
+    font-size:12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- floating hearts -->
+
+<div class="heart" style="left:10%; animation-duration:8s;">♡</div>
+<div class="heart" style="left:25%; animation-duration:12s;">♡</div>
+<div class="heart" style="left:55%; animation-duration:7s;">♡</div>
+<div class="heart" style="left:82%; animation-duration:10s;">♡</div>
+
+<!-- intro -->
+
+<div class="intro-screen" id="intro">
+
+    <div class="magic-heart" id="magicHeart">
+        ♡
+    </div>
+
+    <div class="intro-title">
+        เอิร์นซ่อนอะไรไว้ ✨
+    </div>
+
+    <div class="intro-text">
+        ลองแตะดูสิ :)
+    </div>
+
+</div>
+
+<div class="container">
+
+    <!-- hero -->
+
+    <section class="hero">
+
+        <div class="small">
+            FOR AEKPHAN
+        </div>
+
+        <h1>
+            สุขสันต์วันเกิด<br>
+            <span class="gradient">
+                คนเก่งของเอิร์น
+            </span>
+        </h1>
+
+        <p class="sub">
+            เว็บเล็ก ๆ ที่ตั้งใจทำให้<br>
+            สำหรับคนพิเศษที่สุด 🤍
+        </p>
+
+        <div class="scroll">
+            เลื่อนลงข้างล่าง ↓
+        </div>
+
+    </section>
+
+    <!-- card -->
+
+    <section class="glass">
+
+        <h2>
+            ถึงเอกภัณฑ์ 🤍
+        </h2>
+
+        <p>
+            ขอบคุณที่เข้ามาเป็นความสบายใจ
+            ในทุกวันของเอิร์นนะ
+            <br><br>
+
+            อยู่ด้วยกันไปนาน ๆ เลยนะ
+            ขอให้ปีนี้เป็นปีที่ดีของเธอ
+            มีแต่เรื่องน่ารัก ๆ
+            ได้กินของอร่อย
+            มีความสุขเยอะ ๆ
+            แล้วก็ยิ้มบ่อย ๆ :)
+        </p>
+
+        <!-- รูป -->
+
+        <div class="photo">
+
+            <img src="your-photo.jpg">
+
+        </div>
+
+        <!-- music -->
+
+        <div class="music">
+
+            <div class="dot"></div>
+
+            <div>
+
+                <div style="font-size:13px; color:#999;">
+                    เพลงของเรา
+                </div>
+
+                <div style="font-size:14px; margin-top:2px;">
+                    เปิดเพลงตอนอ่านจะฟินมาก ✨
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- button -->
+
+        <button onclick="showMessage()">
+            กดดูข้อความสุดท้าย ♡
+        </button>
+
+        <!-- hidden -->
+
+        <div class="hidden" id="message">
+
+            <p>
+                ไม่รู้ว่าอนาคตจะเป็นยังไง
+                แต่ตอนนี้ดีใจมากนะ
+                ที่มีเธออยู่ในทุกวันของเอิร์น
+                <br><br>
+
+                สุขสันต์วันเกิดนะคนเก่ง 🤍
+                <br><br>
+
+                รักนะ :)
+            </p>
+
+        </div>
+
+    </section>
+
+    <div class="footer">
+        made with love by earn ✨
+    </div>
+
+</div>
+
+<script>
+
+/* intro */
+
+const heart =
+document.getElementById("magicHeart");
+
+const intro =
+document.getElementById("intro");
+
+heart.addEventListener("click",()=>{
+
+    heart.classList.add("open");
+
+    for(let i=0;i<25;i++){
+
+        const spark =
+        document.createElement("div");
+
+        spark.classList.add("spark");
+
+        spark.innerHTML = "✦";
+
+        spark.style.left =
+        Math.random()*window.innerWidth + "px";
+
+        spark.style.top =
+        Math.random()*window.innerHeight + "px";
+
+        document.body.appendChild(spark);
+
+        setTimeout(()=>{
+            spark.remove();
+        },1000);
+    }
+
+    setTimeout(()=>{
+
+        intro.classList.add("hide");
+
+    },900);
+
+});
+
+/* hidden message */
+
+function showMessage(){
+
+    document
+    .getElementById("message")
+    .style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
