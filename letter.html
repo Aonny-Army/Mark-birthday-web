@@ -393,17 +393,31 @@ h1{
     color:#666;
 }
 
-/* photo */
+/* polaroid */
+
+.polaroid{
+
+    margin-top:24px;
+
+    background:white;
+
+    padding:14px 14px 24px;
+
+    border-radius:22px;
+
+    transform:rotate(-2deg);
+
+    box-shadow:
+    0 12px 30px rgba(180,180,255,.18);
+}
 
 .photo{
 
     width:100%;
 
-    height:430px;
+    height:420px;
 
-    margin-top:20px;
-
-    border-radius:26px;
+    border-radius:18px;
 
     overflow:hidden;
 }
@@ -416,11 +430,24 @@ h1{
     object-fit:cover;
 }
 
+.caption{
+
+    margin-top:16px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    color:#888;
+
+    line-height:1.8;
+}
+
 /* music */
 
 .music{
 
-    margin-top:20px;
+    margin-top:22px;
 
     display:flex;
     align-items:center;
@@ -465,6 +492,39 @@ h1{
     }
 }
 
+/* music button */
+
+.music-btn{
+
+    position:fixed;
+
+    top:18px;
+    right:18px;
+
+    z-index:999;
+
+    border:none;
+
+    width:44px;
+    height:44px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.55);
+
+    backdrop-filter:blur(10px);
+
+    color:#8b5cf6;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 8px 20px rgba(180,180,255,.18);
+}
+
 /* button */
 
 button{
@@ -504,22 +564,55 @@ button{
 
     display:none;
 
-    margin-top:24px;
-
-    animation:fade .7s ease;
+    margin-top:28px;
 }
 
-@keyframes fade{
+.fade-line{
 
-    from{
-        opacity:0;
-        transform:translateY(14px);
-    }
+    opacity:0;
+
+    transform:translateY(18px);
+
+    animation:showLine .8s forwards;
+}
+
+.fade-line:nth-child(1){
+    animation-delay:.3s;
+}
+
+.fade-line:nth-child(2){
+    animation-delay:1.2s;
+}
+
+.fade-line:nth-child(3){
+    animation-delay:2.1s;
+}
+
+.fade-line:nth-child(4){
+    animation-delay:3s;
+}
+
+@keyframes showLine{
 
     to{
         opacity:1;
         transform:translateY(0);
     }
+}
+
+/* secret button */
+
+.secret-btn{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    font-size:13px;
+
+    color:#999;
+
+    cursor:pointer;
 }
 
 /* footer */
@@ -539,6 +632,18 @@ button{
 </head>
 
 <body>
+
+<!-- music button -->
+
+<button class="music-btn" id="musicBtn">
+    ♫
+</button>
+
+<!-- audio -->
+
+<audio id="bgmusic" loop>
+    <source src="special-song.mp3" type="audio/mp3">
+</audio>
 
 <!-- floating hearts -->
 
@@ -583,8 +688,8 @@ button{
         </h1>
 
         <p class="sub">
-            เว็บเล็ก ๆ ที่ตั้งใจทำให้<br>
-            สำหรับคนพิเศษที่สุด 🤍
+            24 ปีของเอกภัณฑ์<br>
+            และปีนี้เอิร์นก็ยังอยู่ตรงนี้ 🤍
         </p>
 
         <div class="scroll">
@@ -614,11 +719,19 @@ button{
             แล้วก็ยิ้มบ่อย ๆ :)
         </p>
 
-        <!-- รูป -->
+        <!-- polaroid -->
 
-        <div class="photo">
+        <div class="polaroid">
 
-            <img src="your-photo.jpg">
+            <div class="photo">
+
+                <img src="your-photo.jpg">
+
+            </div>
+
+            <div class="caption">
+                วันนั้นเอิร์นมีความสุขมากเลยนะ ✨
+            </div>
 
         </div>
 
@@ -635,7 +748,7 @@ button{
                 </div>
 
                 <div style="font-size:14px; margin-top:2px;">
-                    เปิดเพลงตอนอ่านจะฟินมาก ✨
+                    โคตรพิเศษ — แปลรักฉันด้วยใจเธอ 🤍
                 </div>
 
             </div>
@@ -652,17 +765,36 @@ button{
 
         <div class="hidden" id="message">
 
-            <p>
+            <p class="fade-line">
                 ไม่รู้ว่าอนาคตจะเป็นยังไง
-                แต่ตอนนี้ดีใจมากนะ
-                ที่มีเธออยู่ในทุกวันของเอิร์น
-                <br><br>
-
-                สุขสันต์วันเกิดนะคนเก่ง 🤍
-                <br><br>
-
-                รักนะ :)
             </p>
+
+            <br>
+
+            <p class="fade-line">
+                แต่ตอนนี้ดีใจมากนะ
+            </p>
+
+            <br>
+
+            <p class="fade-line">
+                ที่มีเธออยู่ในทุกวันของเอิร์น 🤍
+            </p>
+
+            <br>
+
+            <p class="fade-line">
+                สุขสันต์วันเกิดนะคนเก่ง :)
+            </p>
+
+        </div>
+
+        <!-- secret -->
+
+        <div class="secret-btn"
+        onclick="window.location.href='gallery.html'">
+
+            ห้ามกดนะ 👀
 
         </div>
 
@@ -684,7 +816,12 @@ document.getElementById("magicHeart");
 const intro =
 document.getElementById("intro");
 
+const music =
+document.getElementById("bgmusic");
+
 heart.addEventListener("click",()=>{
+
+    music.play();
 
     heart.classList.add("open");
 
@@ -715,6 +852,26 @@ heart.addEventListener("click",()=>{
         intro.classList.add("hide");
 
     },900);
+
+});
+
+/* music button */
+
+const musicBtn =
+document.getElementById("musicBtn");
+
+musicBtn.addEventListener("click",()=>{
+
+    if(music.paused){
+
+        music.play();
+        musicBtn.innerHTML = "♫";
+
+    }else{
+
+        music.pause();
+        musicBtn.innerHTML = "♡";
+    }
 
 });
 

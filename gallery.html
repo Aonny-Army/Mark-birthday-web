@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Memories ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    overflow-x:hidden;
+}
+
+body{
+
+    font-family:'Prompt',sans-serif;
+
+    overflow-x:hidden;
+
+    background:
+    linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f8f3ff 45%,
+        #eef7ff 100%
+    );
+
+    color:#555;
+
+    position:relative;
+}
+
+/* glow */
+
+body::before{
+
+    content:'';
+
+    position:fixed;
+
+    width:340px;
+    height:340px;
+
+    background:#d9c3ff;
+
+    filter:blur(120px);
+
+    top:-140px;
+    right:-140px;
+
+    opacity:.45;
+
+    z-index:-2;
+}
+
+body::after{
+
+    content:'';
+
+    position:fixed;
+
+    width:300px;
+    height:300px;
+
+    background:#bde0fe;
+
+    filter:blur(120px);
+
+    bottom:-120px;
+    left:-120px;
+
+    opacity:.45;
+
+    z-index:-2;
+}
+
+/* hearts */
+
+.heart{
+
+    position:fixed;
+
+    top:-20px;
+
+    color:#ffffffaa;
+
+    font-size:18px;
+
+    z-index:-1;
+
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+
+    to{
+        transform:translateY(120vh);
+    }
+}
+
+/* top */
+
+.top{
+
+    padding:
+    80px 22px 40px;
+
+    text-align:center;
+}
+
+.small{
+
+    font-size:12px;
+
+    letter-spacing:4px;
+
+    color:#999;
+
+    margin-bottom:16px;
+}
+
+h1{
+
+    font-size:42px;
+
+    line-height:1.3;
+
+    margin-bottom:18px;
+}
+
+.gradient{
+
+    background:
+    linear-gradient(
+        90deg,
+        #b48cff,
+        #7abfff
+    );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+.sub{
+
+    font-size:14px;
+
+    line-height:2;
+
+    color:#777;
+}
+
+/* music */
+
+.music-btn{
+
+    position:fixed;
+
+    top:20px;
+    right:20px;
+
+    width:54px;
+    height:54px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.55);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+    0 10px 25px rgba(180,180,255,.16);
+
+    color:#9d7dff;
+
+    font-size:18px;
+
+    z-index:999;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.music-btn.playing{
+
+    animation:spin 4s linear infinite;
+}
+
+@keyframes spin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* scroll button */
+
+.scroll-bottom{
+
+    position:fixed;
+
+    bottom:24px;
+    right:20px;
+
+    width:54px;
+    height:54px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.55);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+    0 10px 25px rgba(180,180,255,.16);
+
+    color:#9d7dff;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    z-index:999;
+
+    transition:.3s;
+}
+
+/* gallery */
+
+.gallery{
+
+    width:100%;
+
+    padding:0 14px 100px;
+}
+
+/* row */
+
+.row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:14px;
+
+    margin-bottom:14px;
+}
+
+/* card */
+
+.memory{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:30px;
+
+    background:white;
+
+    box-shadow:
+    0 14px 35px rgba(180,180,255,.18);
+
+    cursor:pointer;
+}
+
+/* sizes */
+
+.big{
+    height:520px;
+}
+
+.medium{
+    height:420px;
+}
+
+.small-card{
+    height:280px;
+}
+
+/* media */
+
+.memory img,
+.memory video{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.7s;
+}
+
+/* video icon */
+
+.video-badge{
+
+    position:absolute;
+
+    top:16px;
+    right:16px;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.7);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#8b5cf6;
+
+    font-size:15px;
+
+    z-index:2;
+}
+
+/* overlay */
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        180deg,
+        transparent 45%,
+        rgba(0,0,0,.55) 100%
+    );
+
+    display:flex;
+    align-items:flex-end;
+}
+
+/* caption */
+
+.caption{
+
+    padding:20px;
+
+    color:white;
+}
+
+.caption-title{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.caption-text{
+
+    font-size:13px;
+
+    line-height:1.8;
+
+    opacity:.92;
+}
+
+/* rotate */
+
+.rotate-left{
+    transform:rotate(-1.5deg);
+}
+
+.rotate-right{
+    transform:rotate(1.5deg);
+}
+
+/* viewer */
+
+.viewer{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.94);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+
+    padding:20px;
+}
+
+.viewer.show{
+
+    display:flex;
+}
+
+.viewer img,
+.viewer video{
+
+    width:100%;
+    max-width:500px;
+
+    max-height:85vh;
+
+    object-fit:contain;
+
+    border-radius:24px;
+}
+
+/* footer */
+
+.footer{
+
+    text-align:center;
+
+    padding-bottom:100px;
+
+    color:#999;
+
+    font-size:12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- audio -->
+
+<audio id="bgMusic" loop>
+    <source src="special-song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- music button -->
+
+<button class="music-btn" id="musicBtn">
+    ♪
+</button>
+
+<!-- scroll button -->
+
+<button class="scroll-bottom"
+onclick="scrollToBottom()">
+    ↓
+</button>
+
+<!-- hearts -->
+
+<div class="heart" style="left:10%; animation-duration:8s;">♡</div>
+<div class="heart" style="left:25%; animation-duration:12s;">♡</div>
+<div class="heart" style="left:55%; animation-duration:7s;">♡</div>
+<div class="heart" style="left:82%; animation-duration:10s;">♡</div>
+
+<!-- top -->
+
+<section class="top">
+
+    <div class="small">
+        OUR MEMORIES
+    </div>
+
+    <h1>
+        คลังรูปของ<br>
+        <span class="gradient">
+            เราสองคน ♡
+        </span>
+    </h1>
+
+    <p class="sub">
+        เลื่อนดูไปเรื่อย ๆ นะ :)
+    </p>
+
+</section>
+
+<!-- gallery -->
+
+<section class="gallery" id="gallery"></section>
+
+<div class="footer">
+    made with love by earn ✨
+</div>
+
+<!-- viewer -->
+
+<div class="viewer" id="viewer"
+onclick="closeViewer()">
+</div>
+
+<script>
+
+/* music */
+
+const music =
+document.getElementById("bgMusic");
+
+const musicBtn =
+document.getElementById("musicBtn");
+
+let playing = false;
+
+musicBtn.addEventListener("click",()=>{
+
+    if(!playing){
+
+        music.play();
+
+        musicBtn.classList.add("playing");
+
+        playing = true;
+
+    }else{
+
+        music.pause();
+
+        musicBtn.classList.remove("playing");
+
+        playing = false;
+    }
+});
+
+/* captions */
+
+const captions = [
+
+    "วันนั้นมีความสุขมาก :)",
+    "รูปโปรดของเอิร์น 🤍",
+    "คิดถึงจัง",
+    "แฟนใครน่ารักจัง",
+    "ยิ้มทีไรใจละลาย",
+    "อยู่ด้วยกันไปนาน ๆ นะ",
+    "เก็บไว้ทั้งชีวิตเลยได้มั้ย",
+    "ขอบคุณที่อยู่ด้วยกัน 🤍"
+
+];
+
+/* gallery */
+
+const gallery =
+document.getElementById("gallery");
+
+let photoIndex = 1;
+let videoIndex = 1;
+
+const totalPhotos = 100;
+const totalVideos = 2;
+
+/* random caption */
+
+function randomCaption(){
+
+    return captions[
+        Math.floor(
+            Math.random()*captions.length
+        )
+    ];
+}
+
+/* create gallery */
+
+while(photoIndex <= totalPhotos){
+
+    /* BIG */
+
+    gallery.innerHTML += `
+
+    <div class="memory big rotate-left"
+    onclick="openImage('photos/photo (${photoIndex}).jpg')">
+
+        <img
+        src="photos/photo (${photoIndex}).jpg"
+        loading="lazy">
+
+        <div class="overlay">
+
+            <div class="caption">
+
+                <div class="caption-title">
+                    memory ✨
+                </div>
+
+                <div class="caption-text">
+                    ${randomCaption()}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
+    photoIndex++;
+
+    /* SMALL SMALL */
+
+    if(photoIndex + 1 <= totalPhotos){
+
+        gallery.innerHTML += `
+
+        <div class="row">
+
+            <div class="memory small-card rotate-right"
+            onclick="openImage('photos/photo (${photoIndex}).jpg')">
+
+                <img
+                src="photos/photo (${photoIndex}).jpg"
+                loading="lazy">
+
+            </div>
+
+            <div class="memory small-card rotate-left"
+            onclick="openImage('photos/photo (${photoIndex+1}).jpg')">
+
+                <img
+                src="photos/photo (${photoIndex+1}).jpg"
+                loading="lazy">
+
+            </div>
+
+        </div>
+
+        `;
+
+        photoIndex += 2;
+    }
+
+    /* MEDIUM OR VIDEO */
+
+    if(photoIndex <= totalPhotos){
+
+        /* insert video every 10 photos */
+
+        if(photoIndex % 10 === 0 && videoIndex <= totalVideos){
+
+            gallery.innerHTML += `
+
+            <div class="memory medium rotate-right"
+            onclick="openVideo('videos/video (${videoIndex}).mp4')">
+
+                <video
+                src="videos/video (${videoIndex}).mp4"
+                muted
+                playsinline>
+                </video>
+
+                <div class="video-badge">
+                    ▶
+                </div>
+
+            </div>
+
+            `;
+
+            videoIndex++;
+
+        }else{
+
+            gallery.innerHTML += `
+
+            <div class="memory medium rotate-right"
+            onclick="openImage('photos/photo (${photoIndex}).jpg')">
+
+                <img
+                src="photos/photo (${photoIndex}).jpg"
+                loading="lazy">
+
+            </div>
+
+            `;
+
+            photoIndex++;
+        }
+
+    }
+
+    /* SMALL SMALL */
+
+    if(photoIndex + 1 <= totalPhotos){
+
+        gallery.innerHTML += `
+
+        <div class="row">
+
+            <div class="memory small-card rotate-left"
+            onclick="openImage('photos/photo (${photoIndex}).jpg')">
+
+                <img
+                src="photos/photo (${photoIndex}).jpg"
+                loading="lazy">
+
+            </div>
+
+            <div class="memory small-card rotate-right"
+            onclick="openImage('photos/photo (${photoIndex+1}).jpg')">
+
+                <img
+                src="photos/photo (${photoIndex+1}).jpg"
+                loading="lazy">
+
+            </div>
+
+        </div>
+
+        `;
+
+        photoIndex += 2;
+    }
+
+    /* BIG */
+
+    if(photoIndex <= totalPhotos){
+
+        gallery.innerHTML += `
+
+        <div class="memory big rotate-right"
+        onclick="openImage('photos/photo (${photoIndex}).jpg')">
+
+            <img
+            src="photos/photo (${photoIndex}).jpg"
+            loading="lazy">
+
+            <div class="overlay">
+
+                <div class="caption">
+
+                    <div class="caption-title">
+                        our memory ♡
+                    </div>
+
+                    <div class="caption-text">
+                        ${randomCaption()}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+        photoIndex++;
+    }
+
+}
+
+/* viewer */
+
+const viewer =
+document.getElementById("viewer");
+
+function openImage(src){
+
+    viewer.classList.add("show");
+
+    viewer.innerHTML =
+    `<img src="${src}">`;
+}
+
+function openVideo(src){
+
+    viewer.classList.add("show");
+
+    viewer.innerHTML =
+    `
+    <video
+    src="${src}"
+    controls
+    autoplay
+    playsinline
+    style="width:100%; max-width:500px; border-radius:24px;">
+    </video>
+    `;
+}
+
+function closeViewer(){
+
+    viewer.classList.remove("show");
+
+    viewer.innerHTML = "";
+}
+
+/* scroll */
+
+function scrollToBottom(){
+
+    window.scrollTo({
+
+        top:document.body.scrollHeight,
+
+        behavior:"smooth"
+
+    });
+}
+
+/* hide scroll button */
+
+window.addEventListener("scroll",()=>{
+
+    const button =
+    document.querySelector(".scroll-bottom");
+
+    if(window.innerHeight + window.scrollY
+    >= document.body.offsetHeight - 100){
+
+        button.style.opacity = "0";
+
+    }else{
+
+        button.style.opacity = "1";
+    }
+
+});
+
+</script>
+
+</body>
+</html>
