@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>เพื่อนหรือแฟน</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    overflow:hidden;
+}
+
+body{
+
+    font-family:'Prompt',sans-serif;
+
+    width:100%;
+    height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f8f3ff 50%,
+        #eef7ff 100%
+    );
+
+    position:relative;
+}
+
+/* glow */
+
+body::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    background:#d7c0ff;
+
+    filter:blur(120px);
+
+    top:-140px;
+    right:-120px;
+
+    opacity:.5;
+}
+
+body::after{
+
+    content:'';
+
+    position:absolute;
+
+    width:280px;
+    height:280px;
+
+    background:#bde0fe;
+
+    filter:blur(120px);
+
+    bottom:-120px;
+    left:-100px;
+
+    opacity:.5;
+}
+
+/* floating hearts */
+
+.heart{
+
+    position:absolute;
+
+    color:#d8baff;
+
+    opacity:.35;
+
+    animation:float linear infinite;
+}
+
+@keyframes float{
+
+    from{
+        transform:translateY(120vh);
+    }
+
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+/* card */
+
+.card{
+
+    position:relative;
+
+    z-index:10;
+
+    width:90%;
+    max-width:390px;
+
+    padding:40px 28px;
+
+    border-radius:34px;
+
+    background:
+    rgba(255,255,255,.45);
+
+    backdrop-filter:blur(18px);
+
+    border:
+    1px solid rgba(255,255,255,.55);
+
+    box-shadow:
+    0 10px 35px rgba(180,180,255,.15);
+
+    text-align:center;
+
+    transition:1s;
+}
+
+/* text */
+
+.small{
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    color:#999;
+
+    margin-bottom:18px;
+}
+
+h1{
+
+    font-size:34px;
+
+    line-height:1.45;
+
+    margin-bottom:18px;
+
+    color:#5f5f5f;
+
+    font-weight:600;
+}
+
+.sub{
+
+    font-size:14px;
+
+    line-height:2;
+
+    color:#777;
+
+    margin-bottom:32px;
+}
+
+/* buttons */
+
+.buttons{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:14px;
+}
+
+button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:999px;
+
+    font-family:'Prompt',sans-serif;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:.35s;
+}
+
+.friend{
+
+    background:
+    linear-gradient(
+        90deg,
+        #cbb7ff,
+        #b7dcff
+    );
+
+    color:white;
+
+    box-shadow:
+    0 10px 25px rgba(190,190,255,.25);
+}
+
+.love{
+
+    background:white;
+
+    color:#777;
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+}
+
+/* hidden */
+
+.message{
+
+    margin-top:35px;
+
+    display:none;
+
+    animation:fade 1s ease;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.line{
+
+    opacity:0;
+
+    transform:translateY(10px);
+
+    animation:show .8s forwards;
+}
+
+.line:nth-child(1){
+    animation-delay:.4s;
+}
+
+.line:nth-child(2){
+    animation-delay:1.4s;
+}
+
+.line:nth-child(3){
+    animation-delay:2.4s;
+}
+
+.line:nth-child(4){
+    animation-delay:3.4s;
+}
+
+@keyframes show{
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.final{
+
+    margin-top:26px;
+
+    font-size:15px;
+
+    color:#8d72c7;
+
+    font-weight:500;
+
+    opacity:0;
+
+    animation:
+    show 1s forwards;
+
+    animation-delay:4.5s;
+}
+
+/* blur */
+
+.blur{
+
+    filter:blur(10px);
+
+    opacity:.3;
+
+    transform:scale(.98);
+}
+
+/* footer */
+
+.footer{
+
+    position:absolute;
+
+    bottom:24px;
+
+    font-size:12px;
+
+    color:#aaa;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- floating hearts -->
+
+<div class="heart" style="left:8%; font-size:18px; animation-duration:12s;">♡</div>
+<div class="heart" style="left:28%; font-size:24px; animation-duration:16s;">♡</div>
+<div class="heart" style="left:58%; font-size:20px; animation-duration:10s;">♡</div>
+<div class="heart" style="left:82%; font-size:16px; animation-duration:14s;">♡</div>
+
+<!-- card -->
+
+<div class="card" id="card">
+
+    <div class="small">
+        FOR MARK
+    </div>
+
+    <h1>
+        เพื่อน<br>
+        or<br>
+        แฟน
+    </h1>
+
+    <p class="sub">
+        เอิร์นไม่รู้หรอก<br>
+        ว่าตอนนี้เราเป็นอะไรกัน
+    </p>
+
+    <div class="buttons" id="buttons">
+
+        <button class="friend" onclick="showMessage()">
+            เพื่อน
+        </button>
+
+        <button class="love" onclick="showMessage()">
+            แฟน
+        </button>
+
+    </div>
+
+    <!-- hidden message -->
+
+    <div class="message" id="message">
+
+        <p class="line">
+            ไม่ว่าตอนนี้<br>
+            มาร์คจะเรียกเราว่าอะไร
+        </p>
+
+        <br>
+
+        <p class="line">
+            เอิร์นก็ยังดีใจนะ<br>
+            ที่ครั้งนึงเราเคยรักกันมากขนาดนี้
+        </p>
+
+        <br>
+
+        <p class="line">
+            แล้วต่อให้วันนึง<br>
+            ความสัมพันธ์มันจะเปลี่ยนไป
+        </p>
+
+        <br>
+
+        <p class="line">
+            เอิร์นก็ยังอยากมีมาร์ค<br>
+            อยู่ในชีวิตอยู่ดี :)
+        </p>
+
+        <div class="final">
+            ขอบคุณที่เกิดมานะ 🤍
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    made with love by earn
+</div>
+
+<script>
+
+/* show message */
+
+function showMessage(){
+
+    document
+    .getElementById("buttons")
+    .classList.add("blur");
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("buttons")
+        .style.display = "none";
+
+        document
+        .getElementById("message")
+        .style.display = "block";
+
+    },700);
+}
+
+</script>
+
+</body>
+</html>
