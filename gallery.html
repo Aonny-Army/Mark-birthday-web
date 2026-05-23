@@ -117,7 +117,7 @@ body::after{
 .top{
 
     padding:
-    80px 22px 40px;
+    90px 22px 40px;
 
     text-align:center;
 }
@@ -165,14 +165,13 @@ h1{
     color:#777;
 }
 
-/* music */
+/* floating buttons */
 
-.music-btn{
+.music-btn,
+.scroll-bottom,
+.back-btn{
 
     position:fixed;
-
-    top:20px;
-    right:20px;
 
     width:54px;
     height:54px;
@@ -182,7 +181,7 @@ h1{
     border-radius:50%;
 
     background:
-    rgba(255,255,255,.55);
+    rgba(255,255,255,.6);
 
     backdrop-filter:blur(14px);
 
@@ -198,6 +197,14 @@ h1{
     cursor:pointer;
 
     transition:.3s;
+}
+
+/* music */
+
+.music-btn{
+
+    top:20px;
+    right:20px;
 }
 
 .music-btn.playing{
@@ -216,39 +223,20 @@ h1{
     }
 }
 
-/* scroll button */
+/* scroll */
 
 .scroll-bottom{
 
-    position:fixed;
-
     bottom:24px;
     right:20px;
+}
 
-    width:54px;
-    height:54px;
+/* back */
 
-    border:none;
+.back-btn{
 
-    border-radius:50%;
-
-    background:
-    rgba(255,255,255,.55);
-
-    backdrop-filter:blur(14px);
-
-    box-shadow:
-    0 10px 25px rgba(180,180,255,.16);
-
-    color:#9d7dff;
-
-    font-size:20px;
-
-    cursor:pointer;
-
-    z-index:999;
-
-    transition:.3s;
+    top:20px;
+    left:20px;
 }
 
 /* gallery */
@@ -257,7 +245,7 @@ h1{
 
     width:100%;
 
-    padding:0 14px 100px;
+    padding:0 14px 120px;
 }
 
 /* row */
@@ -273,7 +261,7 @@ h1{
     margin-bottom:14px;
 }
 
-/* card */
+/* memory */
 
 .memory{
 
@@ -320,7 +308,13 @@ h1{
     transition:.7s;
 }
 
-/* video icon */
+.memory:hover img,
+.memory:hover video{
+
+    transform:scale(1.05);
+}
+
+/* video */
 
 .video-badge{
 
@@ -329,13 +323,13 @@ h1{
     top:16px;
     right:16px;
 
-    width:42px;
-    height:42px;
+    width:44px;
+    height:44px;
 
     border-radius:50%;
 
     background:
-    rgba(255,255,255,.7);
+    rgba(255,255,255,.75);
 
     backdrop-filter:blur(10px);
 
@@ -345,7 +339,7 @@ h1{
 
     color:#8b5cf6;
 
-    font-size:15px;
+    font-size:16px;
 
     z-index:2;
 }
@@ -412,16 +406,32 @@ h1{
 
     inset:0;
 
-    background:rgba(0,0,0,.94);
+    background:
+    rgba(10,10,15,.96);
 
     display:none;
 
     justify-content:center;
     align-items:center;
 
-    z-index:9999;
+    flex-direction:column;
+
+    z-index:99999;
 
     padding:20px;
+
+    animation:fade .35s ease;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
 }
 
 .viewer.show{
@@ -429,17 +439,114 @@ h1{
     display:flex;
 }
 
+.viewer-content{
+
+    position:relative;
+
+    width:100%;
+    max-width:430px;
+}
+
 .viewer img,
 .viewer video{
 
     width:100%;
-    max-width:500px;
 
-    max-height:85vh;
+    max-height:78vh;
 
     object-fit:contain;
 
-    border-radius:24px;
+    border-radius:28px;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.45);
+}
+
+/* close */
+
+.close-btn{
+
+    position:absolute;
+
+    top:-55px;
+    right:0;
+
+    width:42px;
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.15);
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+}
+
+/* bottom nav */
+
+.bottom-nav{
+
+    position:fixed;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    bottom:18px;
+
+    width:calc(100% - 30px);
+    max-width:420px;
+
+    padding:14px;
+
+    border-radius:26px;
+
+    background:
+    rgba(255,255,255,.55);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+    0 10px 30px rgba(180,180,255,.16);
+
+    display:flex;
+
+    gap:12px;
+
+    z-index:999;
+}
+
+.nav-btn{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:18px;
+
+    padding:14px;
+
+    font-family:'Prompt',sans-serif;
+
+    font-size:13px;
+
+    cursor:pointer;
+
+    background:white;
+
+    color:#777;
+
+    transition:.3s;
+}
+
+.nav-btn:hover{
+
+    transform:translateY(-2px);
 }
 
 /* footer */
@@ -448,7 +555,7 @@ h1{
 
     text-align:center;
 
-    padding-bottom:100px;
+    padding-bottom:130px;
 
     color:#999;
 
@@ -467,13 +574,20 @@ h1{
     <source src="special-song.mp3" type="audio/mpeg">
 </audio>
 
-<!-- music button -->
+<!-- music -->
 
 <button class="music-btn" id="musicBtn">
     ♪
 </button>
 
-<!-- scroll button -->
+<!-- back -->
+
+<button class="back-btn"
+onclick="window.location.href='index.html'">
+    ←
+</button>
+
+<!-- scroll -->
 
 <button class="scroll-bottom"
 onclick="scrollToBottom()">
@@ -518,8 +632,26 @@ onclick="scrollToBottom()">
 
 <!-- viewer -->
 
-<div class="viewer" id="viewer"
-onclick="closeViewer()">
+<div class="viewer" id="viewer"></div>
+
+<!-- bottom nav -->
+
+<div class="bottom-nav">
+
+    <button class="nav-btn"
+    onclick="window.location.href='index.html'">
+
+        กลับหน้าจดหมาย 🤍
+
+    </button>
+
+    <button class="nav-btn"
+    onclick="window.location.href='relationship.html'">
+
+        ไปดูคำถาม 👀
+
+    </button>
+
 </div>
 
 <script>
@@ -591,19 +723,17 @@ function randomCaption(){
     ];
 }
 
-/* create gallery */
+/* helper */
 
-while(photoIndex <= totalPhotos){
+function createImageCard(size,rotate,index,title){
 
-    /* BIG */
+    return `
 
-    gallery.innerHTML += `
-
-    <div class="memory big rotate-left"
-    onclick="openImage('photos/photo (${photoIndex}).jpg')">
+    <div class="memory ${size} ${rotate}"
+    onclick="openImage('photos/photo (${index}).jpg')">
 
         <img
-        src="photos/photo (${photoIndex}).jpg"
+        src="photos/photo (${index}).jpg"
         loading="lazy">
 
         <div class="overlay">
@@ -611,7 +741,7 @@ while(photoIndex <= totalPhotos){
             <div class="caption">
 
                 <div class="caption-title">
-                    memory ✨
+                    ${title}
                 </div>
 
                 <div class="caption-text">
@@ -625,6 +755,49 @@ while(photoIndex <= totalPhotos){
     </div>
 
     `;
+}
+
+function createVideoCard(index){
+
+    return `
+
+    <div class="memory medium rotate-right"
+    onclick="openVideo('videos/video (${index}).mp4')">
+
+        <video
+        autoplay
+        muted
+        loop
+        playsinline>
+
+            <source
+            src="videos/video (${index}).mp4"
+            type="video/mp4">
+
+        </video>
+
+        <div class="video-badge">
+            ▶
+        </div>
+
+    </div>
+
+    `;
+}
+
+/* build gallery */
+
+while(photoIndex <= totalPhotos){
+
+    /* BIG */
+
+    gallery.innerHTML +=
+    createImageCard(
+        "big",
+        "rotate-left",
+        photoIndex,
+        "memory ✨"
+    );
 
     photoIndex++;
 
@@ -661,53 +834,30 @@ while(photoIndex <= totalPhotos){
         photoIndex += 2;
     }
 
-    /* MEDIUM OR VIDEO */
+    /* VIDEO / MEDIUM */
 
-    if(photoIndex <= totalPhotos){
+    if(photoIndex % 10 === 0
+    && videoIndex <= totalVideos){
 
-        /* insert video every 10 photos */
+        gallery.innerHTML +=
+        createVideoCard(videoIndex);
 
-        if(photoIndex % 10 === 0 && videoIndex <= totalVideos){
+        videoIndex++;
 
-            gallery.innerHTML += `
+    }else{
 
-            <div class="memory medium rotate-right"
-            onclick="openVideo('videos/video (${videoIndex}).mp4')">
+        if(photoIndex <= totalPhotos){
 
-                <video
-                src="videos/video (${videoIndex}).mp4"
-                muted
-                playsinline>
-                </video>
-
-                <div class="video-badge">
-                    ▶
-                </div>
-
-            </div>
-
-            `;
-
-            videoIndex++;
-
-        }else{
-
-            gallery.innerHTML += `
-
-            <div class="memory medium rotate-right"
-            onclick="openImage('photos/photo (${photoIndex}).jpg')">
-
-                <img
-                src="photos/photo (${photoIndex}).jpg"
-                loading="lazy">
-
-            </div>
-
-            `;
+            gallery.innerHTML +=
+            createImageCard(
+                "medium",
+                "rotate-right",
+                photoIndex,
+                "our day ♡"
+            );
 
             photoIndex++;
         }
-
     }
 
     /* SMALL SMALL */
@@ -747,39 +897,26 @@ while(photoIndex <= totalPhotos){
 
     if(photoIndex <= totalPhotos){
 
-        gallery.innerHTML += `
-
-        <div class="memory big rotate-right"
-        onclick="openImage('photos/photo (${photoIndex}).jpg')">
-
-            <img
-            src="photos/photo (${photoIndex}).jpg"
-            loading="lazy">
-
-            <div class="overlay">
-
-                <div class="caption">
-
-                    <div class="caption-title">
-                        our memory ♡
-                    </div>
-
-                    <div class="caption-text">
-                        ${randomCaption()}
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        `;
+        gallery.innerHTML +=
+        createImageCard(
+            "big",
+            "rotate-right",
+            photoIndex,
+            "our memory ♡"
+        );
 
         photoIndex++;
     }
-
 }
+
+/* autoplay preview videos */
+
+document
+.querySelectorAll(".memory video")
+.forEach(video=>{
+
+    video.play().catch(()=>{});
+});
 
 /* viewer */
 
@@ -790,32 +927,72 @@ function openImage(src){
 
     viewer.classList.add("show");
 
-    viewer.innerHTML =
-    `<img src="${src}">`;
+    viewer.innerHTML = `
+
+    <div class="viewer-content">
+
+        <button class="close-btn"
+        onclick="closeViewer(event)">
+
+            ✕
+
+        </button>
+
+        <img src="${src}">
+
+    </div>
+
+    `;
 }
 
 function openVideo(src){
 
     viewer.classList.add("show");
 
-    viewer.innerHTML =
-    `
-    <video
-    src="${src}"
-    controls
-    autoplay
-    playsinline
-    style="width:100%; max-width:500px; border-radius:24px;">
-    </video>
+    viewer.innerHTML = `
+
+    <div class="viewer-content">
+
+        <button class="close-btn"
+        onclick="closeViewer(event)">
+
+            ✕
+
+        </button>
+
+        <video
+        src="${src}"
+        controls
+        autoplay
+        playsinline>
+
+        </video>
+
+    </div>
+
     `;
 }
 
-function closeViewer(){
+function closeViewer(event){
+
+    if(event){
+        event.stopPropagation();
+    }
 
     viewer.classList.remove("show");
 
     viewer.innerHTML = "";
 }
+
+/* click outside close */
+
+viewer.addEventListener("click",(e)=>{
+
+    if(e.target === viewer){
+
+        closeViewer();
+    }
+});
 
 /* scroll */
 
@@ -838,7 +1015,7 @@ window.addEventListener("scroll",()=>{
     document.querySelector(".scroll-bottom");
 
     if(window.innerHeight + window.scrollY
-    >= document.body.offsetHeight - 100){
+    >= document.body.offsetHeight - 120){
 
         button.style.opacity = "0";
 

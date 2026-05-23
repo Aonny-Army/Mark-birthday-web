@@ -443,55 +443,6 @@ h1{
     line-height:1.8;
 }
 
-/* music */
-
-.music{
-
-    margin-top:22px;
-
-    display:flex;
-    align-items:center;
-
-    gap:12px;
-
-    background:
-    rgba(255,255,255,.55);
-
-    padding:14px;
-
-    border-radius:20px;
-}
-
-.dot{
-
-    width:14px;
-    height:14px;
-
-    border-radius:50%;
-
-    background:#c9a7ff;
-
-    animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-
-    0%{
-        transform:scale(1);
-        opacity:1;
-    }
-
-    50%{
-        transform:scale(1.5);
-        opacity:.5;
-    }
-
-    100%{
-        transform:scale(1);
-        opacity:1;
-    }
-}
-
 /* music button */
 
 .music-btn{
@@ -580,15 +531,15 @@ button{
     animation-delay:.3s;
 }
 
-.fade-line:nth-child(2){
+.fade-line:nth-child(3){
     animation-delay:1.2s;
 }
 
-.fade-line:nth-child(3){
+.fade-line:nth-child(5){
     animation-delay:2.1s;
 }
 
-.fade-line:nth-child(4){
+.fade-line:nth-child(7){
     animation-delay:3s;
 }
 
@@ -600,11 +551,14 @@ button{
     }
 }
 
-/* secret button */
+/* extra section */
 
-.secret-btn{
+.extra-section{
 
-    margin-top:30px;
+    margin-top:34px;
+}
+
+.extra-text{
 
     text-align:center;
 
@@ -612,7 +566,90 @@ button{
 
     color:#999;
 
+    margin-bottom:18px;
+}
+
+.extra-buttons{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:14px;
+}
+
+.secret-card{
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:24px;
+
+    background:
+    rgba(255,255,255,.55);
+
+    border:
+    1px solid rgba(255,255,255,.7);
+
+    backdrop-filter:blur(14px);
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
     cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+    0 10px 25px rgba(180,180,255,.12);
+}
+
+.secret-card:hover{
+
+    transform:translateY(-4px);
+}
+
+.emoji{
+
+    width:52px;
+    height:52px;
+
+    border-radius:18px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:24px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #efe3ff,
+        #dff1ff
+    );
+}
+
+.title{
+
+    font-size:15px;
+
+    color:#666;
+
+    font-weight:500;
+}
+
+.desc{
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    color:#999;
+
+    line-height:1.6;
 }
 
 /* footer */
@@ -738,7 +775,7 @@ button{
         <!-- button -->
 
         <button onclick="showMessage()">
-            กดดูข้อความสุดท้าย ♡
+            อยากบอกอะไรด้วยนิดนุง ♡
         </button>
 
         <!-- hidden -->
@@ -769,24 +806,55 @@ button{
 
         </div>
 
-        <!-- secret -->
+        <!-- extra section -->
 
-        <div class="secret-btn"
-        onclick="window.location.href='gallery.html'">
+        <div class="extra-section">
 
-            คลังรูปอยากดูป่ะ 👀
+            <div class="extra-text">
+                เอิร์นซ่อนอะไรไว้อีกนะ 👀
+            </div>
 
-        </div>
+            <div class="extra-buttons">
 
-    <div class="footer">
-        เอิร์นมีคำถามอีกอย่างนะ ;;
-    </div>
-                <!-- secret -->
+                <div class="secret-card"
+                onclick="window.location.href='gallery.html'">
 
-        <div class="secret-btn"
-        onclick="window.location.href='relationship.html'">
+                    <div class="emoji">📸</div>
 
-            เพื่อน or แฟน? 🤔
+                    <div>
+
+                        <div class="title">
+                            คลังความทรงจำ
+                        </div>
+
+                        <div class="desc">
+                            รูปกับวิดีโอของเรา ✨
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="secret-card"
+                onclick="window.location.href='relationship.html'">
+
+                    <div class="emoji">🤍</div>
+
+                    <div>
+
+                        <div class="title">
+                            เพื่อน หรือ แฟน
+                        </div>
+
+                        <div class="desc">
+                            เอิร์นมีอะไรอยากบอก ;;
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 

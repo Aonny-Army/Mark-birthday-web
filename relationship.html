@@ -267,22 +267,32 @@ button:hover{
     transform:translateY(10px);
 
     animation:show .8s forwards;
+
+    line-height:2;
 }
 
 .line:nth-child(1){
     animation-delay:.4s;
 }
 
-.line:nth-child(2){
-    animation-delay:1.4s;
-}
-
 .line:nth-child(3){
-    animation-delay:2.4s;
+    animation-delay:1.2s;
 }
 
-.line:nth-child(4){
-    animation-delay:3.4s;
+.line:nth-child(5){
+    animation-delay:2s;
+}
+
+.line:nth-child(7){
+    animation-delay:2.8s;
+}
+
+.line:nth-child(9){
+    animation-delay:3.6s;
+}
+
+.line:nth-child(11){
+    animation-delay:4.4s;
 }
 
 @keyframes show{
@@ -308,7 +318,7 @@ button:hover{
     animation:
     show 1s forwards;
 
-    animation-delay:4.5s;
+    animation-delay:5.5s;
 }
 
 /* blur */
@@ -335,6 +345,65 @@ button:hover{
     color:#aaa;
 }
 
+/* next actions */
+
+.next-actions{
+
+    margin-top:34px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.next-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #ceb5ff,
+        #b8deff
+    );
+
+    color:white;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+    0 10px 25px rgba(190,190,255,.2);
+}
+
+.next-btn:hover{
+
+    transform:translateY(-3px);
+}
+
+.next-btn.soft{
+
+    background:
+    rgba(255,255,255,.7);
+
+    color:#7b7b7b;
+
+    border:
+    1px solid rgba(255,255,255,.8);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:none;
+}
+
 </style>
 
 </head>
@@ -350,7 +419,7 @@ button:hover{
 
 <!-- card -->
 
-<div class="card" id="card">
+<div class="card">
 
     <div class="small">
         FOR MARK
@@ -369,48 +438,145 @@ button:hover{
 
     <div class="buttons" id="buttons">
 
-        <button class="friend" onclick="showMessage()">
+        <button class="friend" onclick="showFriend()">
             เพื่อน
         </button>
 
-        <button class="love" onclick="showMessage()">
+        <button class="love" onclick="showLove()">
             แฟน
         </button>
 
     </div>
 
-    <!-- hidden message -->
+    <!-- friend message -->
 
-    <div class="message" id="message">
+    <div class="message" id="friendMessage">
 
         <p class="line">
-            ไม่ว่าตอนนี้<br>
-            มาร์คจะเรียกเราว่าอะไร
+            ถ้ามาร์คเลือกคำว่าเพื่อน
         </p>
 
         <br>
 
         <p class="line">
-            เอิร์นก็ยังดีใจนะ<br>
-            ที่ครั้งนึงเราเคยรักกันมากขนาดนี้
+            งั้นเราก็กลับไปเป็นเพื่อนกัน :)
         </p>
 
         <br>
 
         <p class="line">
-            แล้วต่อให้วันนึง<br>
-            ความสัมพันธ์มันจะเปลี่ยนไป
+            แต่เอิร์นอยากให้รู้ไว้นะ
+            ว่าเอิร์นรักความสัมพันธ์ครั้งนี้มากจริง ๆ
         </p>
 
         <br>
 
         <p class="line">
-            เอิร์นก็ยังอยากมีมาร์ค<br>
-            อยู่ในชีวิตอยู่ดี :)
+            แล้วเอิร์นไม่เสียใจเลย
+            ถ้าวันนึงคำว่ารักของเรา
+            มันไปต่อไม่ได้
+        </p>
+
+        <br>
+
+        <p class="line">
+            เพราะเอิร์นรู้ว่า
+            ทั้งมาร์คและเอิร์น
+            เต็มที่กับมันแล้วจริง ๆ 🤍
+        </p>
+
+        <br>
+
+        <p class="line">
+            ต่อจากนี้
+            เราจะเป็นเพื่อนที่ดีต่อกัน
+            เป็นคนที่หวังดีให้กันและกันนะ
         </p>
 
         <div class="final">
-            ขอบคุณที่เกิดมานะ 🤍
+            ขอบคุณที่เคยรักกันนะ :)
+        </div>
+
+        <div class="next-actions">
+
+            <div class="next-btn"
+            onclick="window.location.href='letter.html'">
+
+                ← กลับไปหน้าจดหมาย
+            </div>
+
+            <div class="next-btn soft"
+            onclick="window.location.href='gallery.html'">
+
+                ไปดูคลังความทรงจำ 📸
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- love message -->
+
+    <div class="message" id="loveMessage">
+
+        <p class="line">
+            ถ้ามาร์คจะเลือกคำว่าแฟน
+        </p>
+
+        <br>
+
+        <p class="line">
+            งั้นมาร์คต้องจีบเอิร์นใหม่ก่อนนะ 👀
+        </p>
+
+        <br>
+
+        <p class="line">
+            ต้องง้อเอิร์น
+            ต้องดูแลเอิร์นดี ๆ
+        </p>
+
+        <br>
+
+        <p class="line">
+            แล้วต้องถามสถานะให้ชัดเจนด้วย
+            ว่าเราเป็นอะไรกัน
+        </p>
+
+        <br>
+
+        <p class="line">
+            เพราะเอิร์นไม่อยาก
+            อยู่ในความสัมพันธ์
+            ที่ไม่ชัดเจนอีกแล้ว
+        </p>
+
+        <br>
+
+        <p class="line">
+            ถ้าจะใช้คำว่าแฟน
+            ก็อยากให้พูดมันออกมา
+            แบบมั่นใจจริง ๆ 🤍
+        </p>
+
+        <div class="final">
+            แต่ลึก ๆ เอิร์นก็ยังเลือกมาร์คนะ :)
+        </div>
+
+        <div class="next-actions">
+
+            <div class="next-btn"
+            onclick="window.location.href='letter.html'">
+
+                ← กลับไปหน้าจดหมาย
+            </div>
+
+            <div class="next-btn soft"
+            onclick="window.location.href='gallery.html'">
+
+                ไปดูคลังความทรงจำ 📸
+            </div>
+
         </div>
 
     </div>
@@ -423,9 +589,9 @@ button:hover{
 
 <script>
 
-/* show message */
+/* friend */
 
-function showMessage(){
+function showFriend(){
 
     document
     .getElementById("buttons")
@@ -438,7 +604,28 @@ function showMessage(){
         .style.display = "none";
 
         document
-        .getElementById("message")
+        .getElementById("friendMessage")
+        .style.display = "block";
+
+    },700);
+}
+
+/* love */
+
+function showLove(){
+
+    document
+    .getElementById("buttons")
+    .classList.add("blur");
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("buttons")
+        .style.display = "none";
+
+        document
+        .getElementById("loveMessage")
         .style.display = "block";
 
     },700);
